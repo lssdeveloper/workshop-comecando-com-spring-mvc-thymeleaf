@@ -45,27 +45,27 @@ Noções de Desenvolvimento Web
 
 # Desvantagens
 
-É precisos conhecer mais sobre HTML, CSS e javascript para controlar nossas aplicações.
+*É precisos conhecer mais sobre HTML, CSS e javascript para controlar nossas aplicações.
 
-Não conseguimos controlar componentes criado, controlados pelo Java como no JSF, pois no JSF é a View quem puxa os dados do controller.
+*Não conseguimos controlar componentes criado, controlados pelo Java como no JSF, pois no JSF é a View quem puxa os dados do controller.
 
 # Framework Component Based (Ex:JSF)
 
 # Vantagens
 
-Componentes prontos para serem reutizados sempre quando precisar.
+*Componentes prontos para serem reutizados sempre quando precisar.
 
 # Desvantagens 
 
-Induz o desenvolvedor a misturar as camadas do MVC.
+*Induz o desenvolvedor a misturar as camadas do MVC.
 
-Demanda tempo ao realizar customizações.
+*Demanda tempo ao realizar customizações.
 
-Demanda maior conhecimento técnico ao realizar testes e elaboração de mocks.
+*Demanda maior conhecimento técnico ao realizar testes e elaboração de mocks.
 
-Consomem mais memória.
+*Consomem mais memória.
 
-Abstraem a utilização do HTML, CSS e JavaScript.
+*Abstraem a utilização do HTML, CSS e JavaScript.
 
 # Spring Boot
 
