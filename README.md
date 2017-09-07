@@ -1,10 +1,10 @@
 # workshop-comecando-com-spring-mvc-thymeleaf
-Este projeto desenvolvi no workshop apresentado pela Algaworks Cursos.
 
-Worshop - Começando com Spring MVC - Thymeleaf
+Projeto desenvolvido no workshop apresentado pela Algaworks Cursos.
 
-Sistema de cadastro de títulos (CRUD)
+Workshop - Começando com Spring MVC - Thymeleaf
 
+Sistema de cadastro de cobranças (CRUD)
 
 # Ferramentas no Desenvolvimento
 
