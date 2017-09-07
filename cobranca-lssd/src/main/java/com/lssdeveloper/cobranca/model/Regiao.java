@@ -1,19 +1,20 @@
 package com.lssdeveloper.cobranca.model;
 
-public enum StatusCobranca {
-
-	PENDENTE("Pendente"),
-	RECEBIDO("Recebido"),
-	CANCELADO("Cancelado");
+public enum Regiao {
+	
+	NORTE("Norte"),
+	NORDESTE("Nordeste"),
+	CENTROOESTE("Centro-Oeste"),
+	SUL("Sul"),
+	SUDESTE("Sudeste");
 	
 	private String descricao;
 	
-	StatusCobranca(String descricao) {
+	Regiao(String descricao ) {
 		this.descricao = descricao;
 	}
-	
 	public String getDescricao() {
 		return descricao;
 	}
-	
+
 }

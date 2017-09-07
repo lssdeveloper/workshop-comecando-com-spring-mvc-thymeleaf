@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
-<title>Cadastro de cobrança</title>
+<title>Cadastro de Estados e Capitais do Brasil</title>
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
@@ -18,14 +18,14 @@
         </div>
     </nav>
     
-    <form class="form-horizontal" method="POST" action="/cobrancas">
+    <form class="form-horizontal" method="POST" action="/estados">
     	<div class="alert alert-success" th:if="${!#strings.isEmpty(mensagem)}">
-    		<span th:text="${mensagem}">Cobrança salva com sucesso?</span>
+    		<span th:text="${mensagem}"></span>
     	</div>
     
     	<div class="panel panel-default">
     		<div class="panel-heading">
-    			<h1 class="panel-title">Nova cobrança</h1>
+    			<h1 class="panel-title">Novo Estado</h1>
     		</div>
     		
     		<div class="panel-body">
@@ -36,24 +36,24 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="dataVencimento" class="col-sm-2 control-label">Data de vencimento</label>
+					<label for="sigla" class="col-sm-2 control-label">Sigla</label>
 					<div class="col-sm-2">  
-						<input type="text" class="form-control"	id="dataVencimento" name="dataVencimento"/>
+						<input type="text" class="form-control"	id="sigla" name="sigla"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="valor" class="col-sm-2 control-label">Valor</label>
+					<label for="capiptal" class="col-sm-2 control-label">Capital</label>
 					<div class="col-sm-2">   
-						<input type="text" class="form-control" id="valor" name="valor"/>
+						<input type="text" class="form-control" id="capital" name="capital"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="status" class="col-sm-2 control-label">Status</label>
+					<label for="regiao" class="col-sm-2 control-label">Região</label>
 					<div class="col-sm-2">
-						<select class="form-control" name="status">
-							<option th:each="status : ${todosStatusCobranca}"
-								th:value="${status}"
-								th:text="${status.descricao}"></option>
+						<select class="form-control" name="regiao">
+							<option th:each="regiao : ${todasRegioes}"
+								th:value="${regiao}"
+								th:text="${regiao.descricao}"></option>
 
                     	</select>
                     </div>
