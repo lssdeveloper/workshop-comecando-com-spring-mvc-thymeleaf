@@ -26,6 +26,11 @@ public class CobrancaController {
 		return "CadastroCobranca";
 	}
 	
+	@RequestMapping
+	public String pesquisar() {
+		return "PesquisaCobrancas";
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(Cobranca cobranca) {
 		cobrancas.save(cobranca);
@@ -38,8 +43,7 @@ public class CobrancaController {
 	@ModelAttribute("todosStatusCobranca")
 	public List<StatusCobranca> todosStatusCobranca(){
 		
-		return Arrays.asList(StatusCobranca.values());
-		
+		return Arrays.asList(StatusCobranca.values());	
 	}
 	
 }

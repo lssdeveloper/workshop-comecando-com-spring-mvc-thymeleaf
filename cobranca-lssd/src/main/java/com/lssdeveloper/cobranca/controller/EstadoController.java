@@ -26,6 +26,11 @@ public class EstadoController {
 	public String novo() {
 		return "CadastroEstado";
 	}
+	
+	@RequestMapping
+	public String pesquisar() {
+		return "PesquisaEstados";
+	}
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(Estado estado) {
 		estados.save(estado);
@@ -33,6 +38,7 @@ public class EstadoController {
 		mv.addObject("mensagem", "Estado salvo com sucesso!");
 		return mv;
 	}
+	
 	@ModelAttribute("todasRegioes")
 	public List<Regiao> todasRegioes(){
 		return Arrays.asList(Regiao.values());
