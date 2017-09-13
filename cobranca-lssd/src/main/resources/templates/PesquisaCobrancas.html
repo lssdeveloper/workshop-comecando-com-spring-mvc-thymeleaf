@@ -18,7 +18,8 @@
 		<div class="panel-heading">
 			<div class="clearfix">
 				<h1 class="panel-title lssd-titulo-panel">Pesquisa de cobranças</h1>
-				<a class="btn btn-link lssd-link-panel" href="/cobrancas/novo">Nova Cobrança</a>
+				<a class="btn btn-link lssd-link-panel" href="/cobrancas/novo">Nova
+					Cobrança</a>
 			</div>
 		</div>
 
@@ -36,8 +37,21 @@
 				</thead>
 
 				<tbody>
+					<tr th:each="cobranca : ${cobrancas}">
+						<td class="text-center" th:text="${cobranca.codigo}"></td>
+						<td th:text="${cobranca.descricao}"></td>
+						<td class="text-center" th:text="${{cobranca.dataVencimento}}">
+						</td>
+						<td class="text-right" th:text="|R$ ${{cobranca.valor}}|"></td>
+						<td class="text-center"><span class="label"
+							th:text="${cobranca.status.descricao}"
+							th:classappend="${cobranca.pendente ? 'label-danger' : 'label-success'}"></span>
+						</td>
+						<td class="text-center"></td>
+					</tr>
 					<tr>
-						<td colspan="6">Nenhum registro foi encontrado.</td>
+						<td colspan="6" th:if="${#lists.isEmpty(cobrancas)}">Nenhum
+							registro foi encontrado.</td>
 					</tr>
 				</tbody>
 

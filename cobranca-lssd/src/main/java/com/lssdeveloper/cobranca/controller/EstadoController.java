@@ -28,8 +28,11 @@ public class EstadoController {
 	}
 	
 	@RequestMapping
-	public String pesquisar() {
-		return "PesquisaEstados";
+	public ModelAndView pesquisar() {
+		List<Estado> todosEstados = estados.findAll();
+		ModelAndView mv = new ModelAndView("PesquisaEstados");
+		mv.addObject("estados", todosEstados);
+		return mv;
 	}
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(Estado estado) {

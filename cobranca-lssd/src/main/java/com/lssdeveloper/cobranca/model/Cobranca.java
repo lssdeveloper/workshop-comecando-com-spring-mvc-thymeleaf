@@ -73,6 +73,9 @@ public class Cobranca {
 	public void setStatus(StatusCobranca status) {
 		this.status = status;
 	}
+	public boolean isPendente() {
+		return StatusCobranca.PENDENTE.equals(this.status);
+	}
 
 	@Override
 	public int hashCode() {

@@ -2,10 +2,10 @@ package com.lssdeveloper.cobranca.model;
 
 public enum Regiao {
 	
-	NORTE("Norte"),
+/*	NORTE("Norte"),
 	NORDESTE("Nordeste"),
-	CENTROOESTE("Centro-Oeste"),
-	SUL("Sul"),
+	CENTROOESTE("Centro-Oeste"),*/
+	SUL("---Sul---"),
 	SUDESTE("Sudeste");
 	
 	private String descricao;

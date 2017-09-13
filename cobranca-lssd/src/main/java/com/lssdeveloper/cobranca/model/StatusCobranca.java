@@ -3,8 +3,7 @@ package com.lssdeveloper.cobranca.model;
 public enum StatusCobranca {
 
 	PENDENTE("Pendente"),
-	RECEBIDO("Recebido"),
-	CANCELADO("Cancelado");
+	RECEBIDO("Recebido");
 	
 	private String descricao;
 	

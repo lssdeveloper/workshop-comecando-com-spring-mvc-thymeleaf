@@ -15,7 +15,8 @@
 
 			<div class="clearfix">
 				<h1 class="panel-title lssd-titulo-panel">Pesquisa de estados</h1>
-				<a class="btn btn-link lssd-link-panel" href="/estados/novo">Novo Estado</a>
+				<a class="btn btn-link lssd-link-panel" href="/estados/novo">Novo
+					Estado</a>
 			</div>
 		</div>
 
@@ -28,11 +29,24 @@
 						<th class="text-center col-md-2">Sigla</th>
 						<th class="text-center col-md-2">Capital</th>
 						<th class="text-center col-md-2">Região</th>
+						<th class="col-md-1"></th>
 					</tr>
 				</thead>
 				<tbody>
+					<tr th:each="estado : ${estados}">
+						<td class="text-center" th:text="${estado.codigo}"></td>
+						<td th:text="${estado.descricao}"></td>
+						<td class="text-center" th:text="${estado.sigla}"></td>
+						<td class="text-center" th:text="${estado.capital}"></td>
+						<td class="text-center"><span class="label"
+							th:text="${estado.regiao.descricao}"
+							th:classappend="${estado.sudeste ? 'label-success' : 'label-primary'}"></span>
+						</td>
+						<td class="text-center"></td>
+					</tr>
 					<tr>
-						<td colspan="5">Nenhum registro foi encontrado.</td>
+						<td colspan="6" th:if="${#lists.isEmpty(estados)}">Nenhum
+							registro foi encontrado.</td>
 					</tr>
 				</tbody>
 			</table>

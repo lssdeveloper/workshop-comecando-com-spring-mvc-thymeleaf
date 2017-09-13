@@ -49,6 +49,9 @@ public class Estado {
 	public void setRegiao(Regiao regiao) {
 		this.regiao = regiao;
 	}
+	public boolean isSudeste() {
+		return Regiao.SUDESTE.equals(this.regiao);
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

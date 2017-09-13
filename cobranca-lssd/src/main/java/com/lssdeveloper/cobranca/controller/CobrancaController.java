@@ -1,6 +1,7 @@
 package com.lssdeveloper.cobranca.controller;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,11 @@ public class CobrancaController {
 	}
 	
 	@RequestMapping
-	public String pesquisar() {
-		return "PesquisaCobrancas";
+	public ModelAndView pesquisar() {
+		List<Cobranca> todasCobrancas = cobrancas.findAll(); 
+		ModelAndView mv = new ModelAndView("PesquisaCobrancas");
+		mv.addObject("cobrancas", todasCobrancas);
+		return mv;
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
@@ -45,5 +49,6 @@ public class CobrancaController {
 		
 		return Arrays.asList(StatusCobranca.values());	
 	}
+
 	
 }
