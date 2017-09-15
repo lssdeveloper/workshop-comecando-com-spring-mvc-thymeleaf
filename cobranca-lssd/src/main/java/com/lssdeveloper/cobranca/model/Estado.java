@@ -6,6 +6,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class Estado {
@@ -13,9 +16,19 @@ public class Estado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	
+	@NotEmpty(message="Descricao é obrigatório.")
+	@Size(max=60, message="Tamanho máximo para descrição é de 60 caracteres.")	
 	private String descricao;
+	
+	@NotEmpty(message="Sigla é obrigatório.")
+	@Size(max=2, message="Tamanho máximo para sigla é de 2 caracteres.")
 	private String sigla;
+	
+	@NotEmpty(message="Capital é obrigatório.")
+	@Size(max=80, message="Tamanho máximo para capital de 80 caracteres.")
 	private String capital;
+	
 	@Enumerated(EnumType.STRING)
 	private Regiao regiao;
 	

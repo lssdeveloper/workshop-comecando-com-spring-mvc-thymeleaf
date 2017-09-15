@@ -9,22 +9,20 @@
 
 </head>
 <section layout:fragment="conteudo">
-	<form class="form-horizontal" method="POST" action="/cobrancas">
-		<div class="alert alert-success"
-			th:if="${!#strings.isEmpty(mensagem)}">
-			<span th:text="${mensagem}">Cobrança salva com sucesso?</span>
-		</div>
+	<form class="form-horizontal" method="POST" action="/cobrancas" th:object="${cobranca}">
+    	<div layout:include="Mensagem"></div>
 
 		<div class="panel panel-default">
 
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h1 class="panel-title lssd-titulo-panel">Nova cobrança</h1>
-					<a class="btn btn-link lssd-link-panel" href="/cobrancas">Pesquisa Cobrança</a>
+					<a class="btn btn-link lssd-link-panel" href="/cobrancas">Pesquisa
+						Cobrança</a>
 				</div>
 			</div>
 
-			<div class="panel-body">
+			<div class="panel-body" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
 				<div class="form-group">
 					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
 					<div class="col-sm-4">
@@ -32,7 +30,7 @@
 							name="descricao" />
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" th:classappend="${#fields.hasErrors('dataVencimento')} ? has-error">
 					<label for="dataVencimento" class="col-sm-2 control-label">Data
 						de vencimento</label>
 					<div class="col-sm-2">
@@ -40,7 +38,7 @@
 							name="dataVencimento" />
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" th:classappend="${#fields.hasErrors('valor')} ? has-error">
 					<label for="valor" class="col-sm-2 control-label">Valor</label>
 					<div class="col-sm-2">
 						<input type="text" class="form-control" id="valor" name="valor" />

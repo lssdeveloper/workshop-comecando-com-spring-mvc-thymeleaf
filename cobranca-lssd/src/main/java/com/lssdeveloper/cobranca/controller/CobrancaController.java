@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,8 +25,10 @@ public class CobrancaController {
 	private Cobrancas cobrancas;
 
 	@RequestMapping("/novo")
-	public String novo() {
-		return "CadastroCobranca";
+	public ModelAndView novo() {
+		ModelAndView mv = new ModelAndView("CadastroCobranca");
+		mv.addObject(new Cobranca());
+		return mv;
 	}
 	
 	@RequestMapping
@@ -36,10 +40,13 @@ public class CobrancaController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(Cobranca cobranca) {
-		cobrancas.save(cobranca);
-		
+	public ModelAndView salvar(@Validated Cobranca cobranca, Errors errors) {
+			
 		ModelAndView mv = new ModelAndView("CadastroCobranca");
+		if (errors.hasErrors()) {
+			return mv;
+		}
+		cobrancas.save(cobranca);
 		mv.addObject("mensagem", "Cobrança salva com sucesso!");
 		return mv;
 	}

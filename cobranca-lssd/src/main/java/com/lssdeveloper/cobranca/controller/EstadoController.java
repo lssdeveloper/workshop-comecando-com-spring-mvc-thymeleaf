@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,8 +25,10 @@ public class EstadoController {
 	private Estados estados;
 	
 	@RequestMapping("/novo")
-	public String novo() {
-		return "CadastroEstado";
+	public ModelAndView novo() {
+		ModelAndView mv = new ModelAndView("CadastroEstado");
+		mv.addObject(new Estado());
+		return mv;
 	}
 	
 	@RequestMapping
@@ -35,9 +39,13 @@ public class EstadoController {
 		return mv;
 	}
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(Estado estado) {
-		estados.save(estado);
+	public ModelAndView salvar(@Validated Estado estado, Errors errors) {
 		ModelAndView mv = new ModelAndView("CadastroEstado");
+		if (errors.hasErrors()) {
+			return mv;
+		}
+		estados.save(estado);	
+
 		mv.addObject("mensagem", "Estado salvo com sucesso!");
 		return mv;
 	}
