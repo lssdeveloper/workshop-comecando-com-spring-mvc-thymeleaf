@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lssdeveloper.cobranca.model.Estado;
 import com.lssdeveloper.cobranca.model.Regiao;
@@ -39,15 +40,14 @@ public class EstadoController {
 		return mv;
 	}
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Estado estado, Errors errors) {
-		ModelAndView mv = new ModelAndView("CadastroEstado");
+	public String salvar(@Validated Estado estado, Errors errors, RedirectAttributes attributes) {
+		
 		if (errors.hasErrors()) {
-			return mv;
+			return "CadastroEstado";
 		}
 		estados.save(estado);	
-
-		mv.addObject("mensagem", "Estado salvo com sucesso!");
-		return mv;
+		attributes.addFlashAttribute("mensagem", "Estado salvo com sucesso!");
+		return "redirect:/estados/novo";
 	}
 	
 	@ModelAttribute("todasRegioes")

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lssdeveloper.cobranca.model.Cobranca;
 import com.lssdeveloper.cobranca.model.StatusCobranca;
@@ -40,15 +41,14 @@ public class CobrancaController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView salvar(@Validated Cobranca cobranca, Errors errors) {
+	public String salvar(@Validated Cobranca cobranca, Errors errors, RedirectAttributes attributes) {
 			
-		ModelAndView mv = new ModelAndView("CadastroCobranca");
 		if (errors.hasErrors()) {
-			return mv;
+			return "CadastroCobranca";
 		}
 		cobrancas.save(cobranca);
-		mv.addObject("mensagem", "Cobrança salva com sucesso!");
-		return mv;
+		attributes.addFlashAttribute("mensagem", "Cobrança salva com sucesso!");
+		return "redirect:/cobrancas/novo";
 	}
 	
 	@ModelAttribute("todosStatusCobranca")
