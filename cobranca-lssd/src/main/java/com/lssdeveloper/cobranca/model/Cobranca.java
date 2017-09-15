@@ -16,6 +16,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -28,7 +29,7 @@ public class Cobranca {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@NotEmpty(message="Descrição é obrigatória.")
+	@NotBlank(message="Descrição é obrigatória.")
 	@Size(max=60, message="Tamanho máximo da descrição é de 60 caracteres.")
 	private String descricao;
 	

@@ -116,4 +116,44 @@ Segue alguns exemplos:
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valor;
 ```
-    
+ 
+ ### DICAS
+
+```
+Observação:
+	Veja a diferença abaixo:
+
+	String name = null; 
+ 	@NotNull : falso 
+ 	@NotEmpty : false 
+ 	@NotBlank : falso
+
+	String name = ""; 
+ 	@NotNull : true 
+ 	@NotEmpty : true 
+ 	@NotBlank : falso
+
+	String name = "Great answer!"; 
+ 	@NotNull : true 
+ 	@NotEmpty : true 
+ 	@NotBlank : true
+
+ 	@NotNull  : O objeto CharSequence, Collection, Map ou Array não é nulo , mas pode estar vazio.
+ 	@NotEmpty : O objeto CharSequence, Collection, Map ou Array não é nulo e tamanho> 0 . 
+ 	@NotBlank : A string não é nula e o comprimento cortado é maior que zero .
+
+ 	Note que @NotBlank é mais eficiente ao evitar string vazia ""
+```
+
+
+```java
+  (@Valid Titulo titulo, BindingResult result) ou (@Validated Titulo titulo, Errors errors)  
+ ```
+
+Do jeito que está, nenhuma diferença.
+
+Mas a diferença entre @Validated e @Valid, é que na primeira dá pra gente fazer validações agrupadas por exemplo.
+Mas pra frente teremos uma demonstração do mesmo.
+
+
+
