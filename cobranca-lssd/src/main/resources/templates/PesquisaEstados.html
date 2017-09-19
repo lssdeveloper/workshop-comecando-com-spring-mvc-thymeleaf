@@ -42,7 +42,10 @@
 							th:text="${estado.regiao.descricao}"
 							th:classappend="${estado.sudeste ? 'label-success' : 'label-primary'}"></span>
 						</td>
-						<td class="text-center"></td>
+						<td class="text-center"><a class="btn btn-link btn-xs"
+							th:href="@{/estados/{codigo}(codigo=${estado.codigo})}">
+								<span class="glyphicon glyphicon-pencil"></span>
+						</a></td>
 					</tr>
 					<tr>
 						<td colspan="6" th:if="${#lists.isEmpty(estados)}">Nenhum

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,12 +23,15 @@ import com.lssdeveloper.cobranca.repository.Cobrancas;
 @RequestMapping("/cobrancas")
 public class CobrancaController {
 	
+	private static final String CADASTRO_VIEW = "CadastroCobranca";
+	private static final String PESQUISA_VIEW = "PesquisaCobrancas";
+	
 	@Autowired
 	private Cobrancas cobrancas;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
-		ModelAndView mv = new ModelAndView("CadastroCobranca");
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
 		mv.addObject(new Cobranca());
 		return mv;
 	}
@@ -35,8 +39,14 @@ public class CobrancaController {
 	@RequestMapping
 	public ModelAndView pesquisar() {
 		List<Cobranca> todasCobrancas = cobrancas.findAll(); 
-		ModelAndView mv = new ModelAndView("PesquisaCobrancas");
+		ModelAndView mv = new ModelAndView(PESQUISA_VIEW);
 		mv.addObject("cobrancas", todasCobrancas);
+		return mv;
+	}
+	@RequestMapping("{codigo}")
+	public ModelAndView edicao(@PathVariable("codigo") Cobranca cobranca) {
+		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		mv.addObject(cobranca);
 		return mv;
 	}
 	
@@ -44,7 +54,7 @@ public class CobrancaController {
 	public String salvar(@Validated Cobranca cobranca, Errors errors, RedirectAttributes attributes) {
 			
 		if (errors.hasErrors()) {
-			return "CadastroCobranca";
+			return CADASTRO_VIEW;
 		}
 		cobrancas.save(cobranca);
 		attributes.addFlashAttribute("mensagem", "Cobrança salva com sucesso!");

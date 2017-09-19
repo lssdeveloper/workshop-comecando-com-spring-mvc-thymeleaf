@@ -1,56 +1,64 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorator="LayoutPadrao">
-	
+
 <head>
 
 <title>Cadastro de Estados e Capitais do Brasil</title>
 
 </head>
 
-<section layout:fragment="conteudo">    
-    <form class="form-horizontal" method="POST" action="/estados" th:object="${estado}">
-    	<div layout:include="Mensagem"></div>
-    
-    	<div class="panel panel-default">
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/estados"
+		th:object="${estado}">
+		<div layout:include="Mensagem"></div>
+
+		<div class="panel panel-default">
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h1 class="panel-title lssd-titulo-panel">Novo Estado</h1>
-					<a class="btn btn-link lssd-link-panel" href="/estados">Pesquisa Estado</a>
+					<a class="btn btn-link lssd-link-panel" href="/estados">Pesquisa
+						Estado</a>
 				</div>
 			</div>
-    		
-    		<div class="panel-body">
-				<div class="form-group" th:classappend="${#fields.hasErrors('descricao')} ? has-error">
-					<label for="descricao" class="col-sm-2 control-label" >Descrição</label>
-					<div class="col-sm-4"> 
-						<input type="text" class="form-control" id="descricao" th:field="*{descricao}"/>
+
+			<div class="panel-body">
+				<input type="hidden" th:field="*{codigo}" />
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('descricao')} ? has-error">
+					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="descricao"
+							th:field="*{descricao}" />
 					</div>
 				</div>
-				<div class="form-group" th:classappend="${#fields.hasErrors('sigla')} ? has-error">
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('sigla')} ? has-error">
 					<label for="sigla" class="col-sm-2 control-label">Sigla</label>
-					<div class="col-sm-2">  
-						<input type="text" class="form-control"	id="sigla" th:field="*{sigla}"/>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="sigla"
+							th:field="*{sigla}" />
 					</div>
 				</div>
-				<div class="form-group" th:classappend="${#fields.hasErrors('capital')} ? has-error">
+				<div class="form-group"
+					th:classappend="${#fields.hasErrors('capital')} ? has-error">
 					<label for="capiptal" class="col-sm-2 control-label">Capital</label>
-					<div class="col-sm-2">   
-						<input type="text" class="form-control" id="capital" th:field="*{capital}"/>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="capital"
+							th:field="*{capital}" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="regiao" class="col-sm-2 control-label">Região</label>
 					<div class="col-sm-2">
 						<select class="form-control" name="regiao">
-							<option th:each="regiao : ${todasRegioes}"
-								th:value="${regiao}"
+							<option th:each="regiao : ${todasRegioes}" th:value="${regiao}"
 								th:text="${regiao.descricao}"></option>
 
-                    	</select>
-                    </div>
+						</select>
+					</div>
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
@@ -58,8 +66,8 @@
 					</div>
 				</div>
 			</div>
-    	</div>
-    </form>
+		</div>
+	</form>
 </section>
 
 </html>

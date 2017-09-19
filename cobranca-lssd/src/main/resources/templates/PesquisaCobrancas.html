@@ -47,7 +47,11 @@
 							th:text="${cobranca.status.descricao}"
 							th:classappend="${cobranca.pendente ? 'label-danger' : 'label-success'}"></span>
 						</td>
-						<td class="text-center"></td>
+						<td class="text-center">
+							<a class="btn btn-link btn-xs" th:href="@{/cobrancas/{codigo}(codigo=${cobranca.codigo})}">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</a>
+						</td>
 					</tr>
 					<tr>
 						<td colspan="6" th:if="${#lists.isEmpty(cobrancas)}">Nenhum
