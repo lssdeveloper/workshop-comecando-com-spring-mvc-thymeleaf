@@ -52,6 +52,14 @@ public class EstadoController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		
+		estados.delete(codigo);	
+		attributes.addFlashAttribute("mensagem", "Estado excluído com sucesso!");
+		return "redirect:/estados";
+	}
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Estado estado, Errors errors, RedirectAttributes attributes) {
 		

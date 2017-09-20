@@ -49,6 +49,12 @@ public class CobrancaController {
 		mv.addObject(cobranca);
 		return mv;
 	}
+	@RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		cobrancas.delete(codigo);
+		attributes.addFlashAttribute("mensagem", "Cobrança excluída com sucesso!");
+		return "redirect:/cobrancas";
+	}
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvar(@Validated Cobranca cobranca, Errors errors, RedirectAttributes attributes) {
